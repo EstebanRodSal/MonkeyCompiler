@@ -1,60 +1,17 @@
-using System.Text;
-
 using System;
-using System.IO;
-using Antlr4.Runtime;
-using Antlr4.Runtime.Tree;
-using Generated;
-using MonkeyCompiler;           
+using System.Windows.Forms;
 
-
-class Program
+namespace MonkeyCompiler
 {
-    static void Main(string[] args)
+    internal static class Program
     {
-    
-        try
+        [STAThread]
+        static void Main()
         {
-            var sourcePath = "ejemplo.monkey";
-            var sourceCode = File.ReadAllText(sourcePath);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            //Crear el input stream
-            var input = new AntlrInputStream(sourceCode);
-        
-            //Crear el Lexer (Scanner)
-            MonkeyLexer lexer = new MonkeyLexer(input);
-        
-            //Crear el stream de tokens
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-        
-            //Crear el parser
-            MonkeyParser parser = new MonkeyParser(tokens);
-        
-        
-            var errorListener = new MyErrorListener();
-
-            lexer.RemoveErrorListeners();
-            parser.RemoveErrorListeners();
-
-            lexer.AddErrorListener(errorListener);
-            parser.AddErrorListener(errorListener);
-
-            var parseTree = parser.program();
-
-            if (errorListener.HasErrors())
-            {
-                Console.WriteLine("Error:");
-                Console.WriteLine(errorListener.ToString());
-            }
-            else
-            {
-                Console.WriteLine("Compilation success!.\n");
-            }
-            
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
+            Application.Run(new Form1());
         }
     }
 }
