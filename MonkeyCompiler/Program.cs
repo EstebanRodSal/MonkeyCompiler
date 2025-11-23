@@ -5,7 +5,8 @@ using System.IO;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Generated;
-using MonkeyCompiler;           
+using MonkeyCompiler;
+using MonkeyCompiler.Checker;
 
 
 class Program
@@ -40,6 +41,7 @@ class Program
             parser.AddErrorListener(errorListener);
 
             var parseTree = parser.program();
+            
 
             if (errorListener.HasErrors())
             {
@@ -48,6 +50,17 @@ class Program
             }
             else
             {
+                var typeChecker = new TypeChecker();
+                typeChecker.Visit(parseTree);
+                
+                if (typeChecker.HasErrors())
+                {
+                    foreach (var error in typeChecker.GetErrors())
+                    {
+                        Console.WriteLine(error);
+                    }
+                }
+                
                 Console.WriteLine("Compilation success!.\n");
             }
             

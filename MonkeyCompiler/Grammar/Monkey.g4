@@ -249,7 +249,7 @@ IDENTIFIER
     : [a-zA-Z_] [a-zA-Z_0-9]*
     ;
 
-// Escapes comunes: \n, \t, \r, \", \', \\
+// Escapes: \n, \t, \r, \", \', \\
 fragment EscapeSequence
     : '\\' [btnrf"'\\]
     ;
