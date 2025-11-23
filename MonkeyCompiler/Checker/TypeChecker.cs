@@ -8,13 +8,12 @@ namespace MonkeyCompiler.Checker;
 
 public class TypeChecker: MonkeyBaseVisitor<object>
 {
-    private readonly SymbolTable _symbolTable; //Tabla de simbolos
+    private readonly SymbolTable _symbolTable;
     private readonly List<string> _errors;
     private MonkeyType? _currentFunctionReturnType;
     private bool _isInFunction;
     private bool _isInArrayLiteral = false;
-    
-    
+    private bool _isInGlobalScope = true; // Rastrea si está en scope global
     
     public TypeChecker()
     {
@@ -22,26 +21,13 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         _errors = new List<string>();
         _currentFunctionReturnType = null;
         _isInFunction = false;
-        
     }
-    
-    // =====================Reporte de errores =======================
-    public List<string> GetErrors() => _errors;
-    public bool HasErrors() => _errors.Count > 0;
-
-    private void ReportError(string message, int line = 0)
-    {
-        _errors.Add($"Line {line}: {message}");
-    }
-    // ================================================================
-    
     
     private void VisitFunctionBody(MonkeyParser.FunctionDeclarationContext context)
     {
         var returnType = (MonkeyType)Visit(context.type());
         var paramTypes = new List<MonkeyType>();
 
-        // Procesar parámetros
         if (context.functionParameters() != null)
         {
             foreach (var param in context.functionParameters().parameter())
@@ -51,12 +37,11 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             }
         }
 
-        // Entrar al ámbito de la función
         _symbolTable.EnterScope();
         _isInFunction = true;
+        _isInGlobalScope = false; // Sale del scope global
         _currentFunctionReturnType = returnType;
 
-        // Declarar parámetros en el ámbito de la función
         if (context.functionParameters() != null)
         {
             var parameters = context.functionParameters().parameter();
@@ -71,38 +56,36 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             }
         }
 
-        // Visitar el cuerpo de la función
         Visit(context.blockStatement());
 
         _currentFunctionReturnType = null;
         _isInFunction = false;
+        _isInGlobalScope = true; // Vuelve al scope global
         _symbolTable.ExitScope();
     }
     
     
     
-    
+    // =====================Reporte de errores =======================
+    public List<string> GetErrors() => _errors;
+    public bool HasErrors() => _errors.Count > 0;
+
+    private void ReportError(string message, int line = 0)
+    {
+        _errors.Add($"Line {line}: {message}");
+    }
+    // ================================================================
     
     
     
     // =====================Visists =======================
-    
 
     public override object VisitProgram(MonkeyParser.ProgramContext context)
     {
-        /*
-         * Según la gramatica de Monkey, Program espera (functionDeclaration | statement)* mainFunction
-         * Es por eso que primero se deben visitar todas las declaraciones de funciones, statements globales y
-         * visitar el main
-         */
-        
-        
-        // Declarar solo las FIRMAS de las funciones (sin visitar sus cuerpos)
+        // Declarar solo las FIRMAS de las funciones
         foreach (var funcDecl in context.functionDeclaration())
         {
             var funcName = funcDecl.identifier().GetText();
-        
-            // Obtener solo el tipo de retorno y parámetros, SIN procesar el cuerpo
             var returnType = (MonkeyType)Visit(funcDecl.type());
             var paramTypes = new List<MonkeyType>();
 
@@ -124,7 +107,7 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             }
         }
 
-        // Visitar statements globales (variables, constantes)
+        // Visitar statements globales
         foreach (var stmt in context.statement())
         {
             Visit(stmt);
@@ -136,7 +119,7 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             VisitFunctionBody(funcDecl);
         }
 
-        //Visitar main
+        // Visitar main
         Visit(context.mainFunction());
     
         return null;
@@ -146,12 +129,14 @@ public class TypeChecker: MonkeyBaseVisitor<object>
     {
         _symbolTable.EnterScope();
         _isInFunction = true;
+        _isInGlobalScope = false;
         _currentFunctionReturnType = new VoidType();
 
         Visit(context.blockStatement());
 
         _currentFunctionReturnType = null;
         _isInFunction = false;
+        _isInGlobalScope = true;
         _symbolTable.ExitScope();
         
         return new VoidType();
@@ -162,7 +147,6 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         var returnType = (MonkeyType)Visit(context.type());
         var paramTypes = new List<MonkeyType>();
 
-        // Procesar parámetros
         if (context.functionParameters() != null)
         {
             foreach (var param in context.functionParameters().parameter())
@@ -174,12 +158,11 @@ public class TypeChecker: MonkeyBaseVisitor<object>
 
         var functionType = new FunctionType(paramTypes, returnType);
 
-        // Entrar al ámbito de la función
         _symbolTable.EnterScope();
         _isInFunction = true;
+        _isInGlobalScope = false;
         _currentFunctionReturnType = returnType;
 
-        // Declarar parámetros en el ámbito de la función
         if (context.functionParameters() != null)
         {
             var parameters = context.functionParameters().parameter();
@@ -194,11 +177,11 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             }
         }
 
-        // Visitar el cuerpo de la función
         Visit(context.blockStatement());
 
         _currentFunctionReturnType = null;
         _isInFunction = false;
+        _isInGlobalScope = true;
         _symbolTable.ExitScope();
 
         return functionType;
@@ -214,8 +197,6 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         return base.VisitParameter(context);
     }
 
-    
-    
     public override object VisitType(MonkeyParser.TypeContext context)
     {
         if (context.INT_TYPE() != null) return new IntType();
@@ -241,7 +222,6 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         var keyType = (MonkeyType)Visit(context.type(0));
         var valueType = (MonkeyType)Visit(context.type(1));
         
-        // Validar que el tipo de la llave sea int o string
         if (!(keyType is IntType || keyType is StringType))
         {
             ReportError("Hash key type must be int or string", context.Start.Line);
@@ -307,14 +287,12 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         var declaredType = (MonkeyType)Visit(context.type());
         var exprType = (MonkeyType)Visit(context.expression());
 
-        // Verificar que el tipo de la expresión sea compatible
         if (!declaredType.IsCompatibleWith(exprType))
         {
             ReportError($"Type mismatch in declaration of '{varName}'. Expected {declaredType}, got {exprType}", 
                 context.Start.Line);
         }
 
-        // Declarar la variable
         if (!_symbolTable.DeclareSymbol(varName, declaredType, false, false))
         {
             ReportError($"Variable '{varName}' is already declared in this scope", 
@@ -383,7 +361,7 @@ public class TypeChecker: MonkeyBaseVisitor<object>
 
     public override object VisitExpressionStatement(MonkeyParser.ExpressionStatementContext context)
     {
-        Visit(context.expression()); // Visitar la expresión para verificar tipos
+        Visit(context.expression());
         return null;
     }
 
@@ -449,14 +427,13 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             var rightType = (MonkeyType)Visit(context.additionExpression(i + 1));
             var op = context.relationalOp(i).GetText();
 
-            // Los operadores relacionales requieren tipos compatibles
             if (!leftType.IsCompatibleWith(rightType))
             {
                 ReportError($"Type mismatch in relational operation '{op}'. Cannot compare {leftType} with {rightType}", 
                     context.Start.Line);
             }
 
-            leftType = new BoolType(); // El resultado de una comparación es booleano
+            leftType = new BoolType();
         }
 
         return leftType;
@@ -476,7 +453,6 @@ public class TypeChecker: MonkeyBaseVisitor<object>
             var rightType = (MonkeyType)Visit(context.multiplicationExpression(i + 1));
             var op = context.GetChild(2 * i + 1).GetText();
 
-            // + funciona con int y string, - solo con int
             if (op == "+")
             {
                 if (!((leftType is IntType && rightType is IntType) || 
@@ -509,7 +485,6 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         {
             var rightType = (MonkeyType)Visit(context.elementExpression(i + 1));
 
-            // * y / requieren ambos operandos de tipo int
             if (!(leftType is IntType && rightType is IntType))
             {
                 ReportError($"Multiplication/division requires both operands to be int. Got {leftType} and {rightType}", 
@@ -526,106 +501,75 @@ public class TypeChecker: MonkeyBaseVisitor<object>
     {
         var baseType = (MonkeyType)Visit(context.primitiveExpression());
 
-    if (context.elementAccess() != null)
-    {
-        var indexType = (MonkeyType)Visit(context.elementAccess().expression());
+        if (context.elementAccess() != null)
+        {
+            var indexType = (MonkeyType)Visit(context.elementAccess().expression());
 
-        if (baseType is ArrayType arrayType)
-        {
-            // El índice debe ser int
-            if (!(indexType is IntType))
+            if (baseType is ArrayType arrayType)
             {
-                ReportError($"Array index must be int, got {indexType}", 
-                           context.Start.Line);
-            }
-            return arrayType.ElementType;
-        }
-        else if (baseType is HashType hashType)
-        {
-            // El índice debe coincidir con el tipo de key
-            if (!hashType.KeyType.IsCompatibleWith(indexType))
-            {
-                ReportError($"Hash key type mismatch. Expected {hashType.KeyType}, got {indexType}", 
-                           context.Start.Line);
-            }
-            
-            // Validar que la clave existe si es un literal
-            if (context.primitiveExpression() is MonkeyParser.HashLiteralExprContext hashLiteralCtx)
-            {
-                var hashLiteral = hashLiteralCtx.hashLiteral();
-                var accessKey = context.elementAccess().expression().GetText();
-                bool keyExists = false;
-                
-                if (hashLiteral.hashContent() != null)
+                if (!(indexType is IntType))
                 {
-                    foreach (var content in hashLiteral.hashContent())
+                    ReportError($"Array index must be int, got {indexType}", 
+                               context.Start.Line);
+                }
+                return arrayType.ElementType;
+            }
+            else if (baseType is HashType hashType)
+            {
+                if (!hashType.KeyType.IsCompatibleWith(indexType))
+                {
+                    ReportError($"Hash key type mismatch. Expected {hashType.KeyType}, got {indexType}", 
+                               context.Start.Line);
+                }
+                
+                return hashType.ValueType;
+            }
+            else
+            {
+                ReportError($"Cannot index type {baseType}", context.Start.Line);
+                return new VoidType();
+            }
+        }
+
+        if (context.callExpression() != null)
+        {
+            if (baseType is not FunctionType funcType)
+            {
+                ReportError($"Cannot call non-function type {baseType}", 
+                           context.Start.Line);
+                return new VoidType();
+            }
+
+            var argTypes = new List<MonkeyType>();
+            if (context.callExpression().expressionList() != null)
+            {
+                foreach (var expr in context.callExpression().expressionList().expression())
+                {
+                    argTypes.Add((MonkeyType)Visit(expr));
+                }
+            }
+
+            if (argTypes.Count != funcType.ParameterTypes.Count)
+            {
+                ReportError($"Function expects {funcType.ParameterTypes.Count} arguments, got {argTypes.Count}", 
+                           context.Start.Line);
+            }
+            else
+            {
+                for (int i = 0; i < argTypes.Count; i++)
+                {
+                    if (!funcType.ParameterTypes[i].IsCompatibleWith(argTypes[i]))
                     {
-                        var keyText = content.expression(0).GetText();
-                        if (keyText == accessKey)
-                        {
-                            keyExists = true;
-                            break;
-                        }
+                        ReportError($"Argument {i + 1} type mismatch. Expected {funcType.ParameterTypes[i]}, got {argTypes[i]}", 
+                                   context.Start.Line);
                     }
                 }
-                
-                if (!keyExists)
-                {
-                    ReportError($"Hash key '{accessKey}' does not exist in hash literal", 
-                               context.Start.Line);
-                }
             }
-            
-            return hashType.ValueType;
-        }
-        else
-        {
-            ReportError($"Cannot index type {baseType}", context.Start.Line);
-            return new VoidType();
-        }
-    }
 
-    if (context.callExpression() != null)
-    {
-        if (baseType is not FunctionType funcType)
-        {
-            ReportError($"Cannot call non-function type {baseType}", 
-                       context.Start.Line);
-            return new VoidType();
+            return funcType.ReturnType;
         }
 
-        var argTypes = new List<MonkeyType>();
-        if (context.callExpression().expressionList() != null)
-        {
-            foreach (var expr in context.callExpression().expressionList().expression())
-            {
-                argTypes.Add((MonkeyType)Visit(expr));
-            }
-        }
-
-        // Verificar número de argumentos
-        if (argTypes.Count != funcType.ParameterTypes.Count)
-        {
-            ReportError($"Function expects {funcType.ParameterTypes.Count} arguments, got {argTypes.Count}", 
-                       context.Start.Line);
-        }
-        else
-        {
-            // Verificar tipos de argumentos
-            for (int i = 0; i < argTypes.Count; i++)
-            {
-                if (!funcType.ParameterTypes[i].IsCompatibleWith(argTypes[i]))
-                {
-                    ReportError($"Argument {i + 1} type mismatch. Expected {funcType.ParameterTypes[i]}, got {argTypes[i]}", 
-                               context.Start.Line);
-                }
-            }
-        }
-
-        return funcType.ReturnType;
-    }
-
-    return baseType;
+        return baseType;
     }
 
     public override object VisitElementAccess(MonkeyParser.ElementAccessContext context)
@@ -687,30 +631,8 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         return Visit(context.arrayLiteral());
     }
 
-    
-    private bool IsInFunctionDeclarationContext(ParserRuleContext context)
-    {
-        var parent = context.Parent;
-        while (parent != null)
-        {
-            if (parent is MonkeyParser.ProgramContext || 
-                parent is MonkeyParser.FunctionDeclarationContext)
-            {
-                return true;
-            }
-            parent = parent.Parent;
-        }
-        return false;
-    }
     public override object VisitFunctionLiteralExpr(MonkeyParser.FunctionLiteralExprContext context)
     {
-        // Validar que solo se declare en contextos permitidos
-        if (!_isInArrayLiteral && !IsInFunctionDeclarationContext(context))
-        {
-            ReportError("Function literals can only be declared at the top level or inside arrays", 
-                context.Start.Line);
-        }
-    
         return Visit(context.functionLiteral());
     }
 
@@ -760,15 +682,15 @@ public class TypeChecker: MonkeyBaseVisitor<object>
 
         var funcType = new FunctionType(paramTypes, returnType);
 
-        // Procesar el cuerpo de la función
         _symbolTable.EnterScope();
         var prevReturnType = _currentFunctionReturnType;
         var prevInFunction = _isInFunction;
+        var prevInGlobalScope = _isInGlobalScope;
         
         _currentFunctionReturnType = returnType;
         _isInFunction = true;
+        _isInGlobalScope = false;
 
-        // Declarar parámetros
         if (context.functionParameters() != null)
         {
             var parameters = context.functionParameters().parameter();
@@ -783,6 +705,7 @@ public class TypeChecker: MonkeyBaseVisitor<object>
 
         _currentFunctionReturnType = prevReturnType;
         _isInFunction = prevInFunction;
+        _isInGlobalScope = prevInGlobalScope;
         _symbolTable.ExitScope();
 
         return funcType;
@@ -792,21 +715,17 @@ public class TypeChecker: MonkeyBaseVisitor<object>
     {
         if (context.hashContent() == null || context.hashContent().Length == 0)
         {
-            // Hash vacío
             return new HashType(new IntType(), new IntType());
         }
 
-        // Inferir tipos del primer par key:value
         var firstKeyType = (MonkeyType)Visit(context.hashContent(0).expression(0));
         var firstValueType = (MonkeyType)Visit(context.hashContent(0).expression(1));
 
-        // Validar que la key sea int o string
         if (!(firstKeyType is IntType || firstKeyType is StringType))
         {
             ReportError("Hash keys must be int or string", context.Start.Line);
         }
 
-        // Verificar que todos los pares tengan los mismos tipos
         foreach (var hashContent in context.hashContent().Skip(1))
         {
             var keyType = (MonkeyType)Visit(hashContent.expression(0));

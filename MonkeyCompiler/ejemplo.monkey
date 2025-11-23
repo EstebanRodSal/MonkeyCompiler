@@ -1,184 +1,133 @@
-// ===============================
-// Variables y constantes globales
-// ===============================
-
-let const MAX_FIB: int = 10
-//let const MAX_FIB: int = 10
-
-let greeting: string = "Hello from the Monkey compiler!"
-let numbers: array<int> = [1, 2, 3, 4, 5]
-
-let person: hash<string, string> = {
-    "name": "Thorsten",
-    "role": "Author of Monkey"
+fn add(a: int, b: int) : int {
+    return a + b
 }
 
-let ages: hash<string, int> = {
-    "Alice": 30,
-    "Bob": 25
-}
-
-let letterA: char = 'A'
-
-// Función de primer orden almacenada en una variable
-let doubleFn: fn(int) : int = fn(x: int) : int {
-    return x + x
-}
-
-// =======================================
-// Funciones auxiliares y de demostración
-// =======================================
-
-fn fib(n: int) : int {
+fn factorial(n: int) : int {
     if (n == 0) {
-        return 0
+        return 1
     } else {
-        if (n == 1) {
-            return 1
-        } else {
-            return fib(n - 1) + fib(n - 2)
-        }
+        let previous: int = n - 1
+        let result: int = factorial(previous)
+        return n * result
     }
 }
 
-fn increment(x: int) : int {
-    return x + 1
+fn sumArray(values: array<int>) : int {
+    let first: int = values[0]
+    let second: int = values[1]
+    let third: int = values[2]
+    let sum: int = first + second + third
+    return sum
 }
 
-// Función que recibe otra función como parámetro (functionType)
-fn applyTwice(value: int, f: fn(int) : int) : int {
-    let first: int = f(value)
-    let second: int = f(first)
-    return second
+fn buildFullName(firstName: string, lastName: string) : string {
+    let space: string = " "
+    let withSpace: string = firstName + space
+    let fullName: string = withSpace + lastName
+    return fullName
 }
 
-// Imprime la serie de Fibonacci desde 0 hasta limit (inclusive) usando recursión
-fn printFibFrom(i: int, limit: int) : void {
-    if (i > limit) {
-        // caso base: nada más que hacer
-        return
+fn isAdult(age: int) : bool {
+    if (age >= 18) {
+        return true
     } else {
-        let current: int = fib(i)
-        print(current)
-        printFibFrom(i + 1, limit)
+        return false
     }
 }
 
-fn printFibSeries(limit: int) : void {
-    print("Fibonacci series:")
-    printFibFrom(0, limit)
+fn logCalculation(label: string, value: int) : void {
+    print(label)
+    print(value)
+    return
 }
 
-// Imprime algunos elementos de un array
-fn demoArray(arr: array<int>) : void {
-    print("Array demo:")
-    let first: int = arr[0]
-    let third: int = arr[2]
-    let last: int = arr[4]
-
-    print(first)
-    print(third)
-    print(last)
+fn applyTwice(f: fn(int) : int, value: int) : int {
+    let firstResult: int = f(value)
+    let secondResult: int = f(firstResult)
+    return secondResult
 }
 
-// Demostración de hash<string, string> y hash<string, int>
-fn demoHashes() : void {
-    print("Hash demo (person):")
-    let name: string = person["name"]
-    let role: string = person["role"]
-    print(name)
-    print(role)
-
-    print("Hash demo (ages):")
-    let aliceAge: int = ages["Alice"]
-    let bobAge: int = ages["Bob"]
-    print(aliceAge)
-    print(bobAge)
-}
-
-// Demostración de tipos básicos y comparaciones
-fn demoBasics() : void {
-    print("Basics demo:")
-
-    let x: int = 5
-    let y: int = 8
-    let message: string = "simple comparison"
-    let isLess: bool = x < y
-    let sameLetter: bool = letterA == 'A'
-
-    print(message)
-    print(isLess)
-    print(sameLetter)
-}
-
-// Función que devuelve otra función (fn() : fn(int):int)
-fn makeAdder(delta: int) : fn(int) : int {
-    let addDelta: fn(int) : int = fn(value: int) : int {
-        return value + delta
+fn makeMultiplier(factor: int) : fn(int) : int {
+    let inner: fn(int) : int = fn(x: int) : int {
+        return x * factor
     }
-    return addDelta
+    return inner
 }
 
-// =========================
-// Función principal (main)
-// =========================
+fn getCountryName(countries: hash<string,string>, code: string) : string {
+    let name: string = countries[code]
+    return name
+}
 
 fn main() : void {
-    print("=== Monkey Language Full Demo ===")
-    print(greeting)
+    // Constante y aritmética básica
+    let const MAX_AGE: int = 120
+    let a: int = 10
+    let b: int = 20
+    let c: int = add(a, b)
+    print("Result of add:")
+    print(c)
 
-    // Demostraciones básicas
-    demoBasics()
+    // Factorial
+    let n: int = 5
+    let factN: int = factorial(n)
+    print("Factorial of 5:")
+    print(factN)
 
-    // Demostración de Fibonacci
-    printFibSeries(MAX_FIB)
+    // Arreglos y acceso a elementos
+    let numbers: array<int> = [1, 2, 3]
+    let total: int = sumArray(numbers)
+    print("Sum of [1, 2, 3]:")
+    print(total)
 
-    // Uso directo de fib en main
-    let n: int = 8
-    let fibN: int = fib(n)
-    print("fib(8):")
-    print(fibN)
+    // Strings y concatenación
+    let full: string = buildFullName("Esteban", "Rodriguez")
+    print("Full name:")
+    print(full)
 
-    // Demostración de arrays
-    demoArray(numbers)
+    // Caracteres
+    let initial: char = 'E'
+    print("Initial:")
+    print(initial)
 
-    // Demostración de hashes
-    demoHashes()
+    // Hash map con llaves y valores string
+    let countries: hash<string,string> = {"CR": "Costa Rica", "DE": "Germany"}
+    let country: string = getCountryName(countries, "CR")
+    print("Country for CR:")
+    print(country)
 
-    // Uso de función almacenada en variable (doubleFn)
-    let value: int = 5
-    let doubled: int = doubleFn(value)
-    print("doubleFn(5):")
-    print(doubled)
+    
+    let age: int = 6
 
-    // Uso de función de orden superior applyTwice
-    let applied: int = applyTwice(value, increment)
-    print("applyTwice(5, increment):")
-    print(applied)
-
-    // Uso de función que devuelve otra función (makeAdder)
-    let addTen: fn(int) : int = makeAdder(10)
-    let resultAddTen: int = addTen(7)
-    print("makeAdder(10)(7):")
-    print(resultAddTen)
-
-    // Llamada inmediata a un literal de función (IIFE)
-    let squared: int = fn(x: int) : int {
-        return x * x
-    }(3)
-
-    print("square(3) via IIFE:")
-    print(squared)
-
-    // Pequeño if/else con bool
-    let isSmall: bool = value < 10
-    if (isSmall) {
-        print("value is small")
+    let adult: bool = isAdult(age)
+    if (adult) {
+        print("Adult")
     } else {
-        print("value is big")
+        print("Minor")
     }
 
-    // Uso de char sólo para que el tipo se pruebe bien
-    print("Character demo:")
-    print(letterA)
+    // Literales de función y tipos de función
+    let doubleFn: fn(int) : int = fn(x: int) : int {
+        return x * 2
+    }
+    let applied: int = applyTwice(doubleFn, 5)
+    print("applyTwice(double, 5):")
+    print(applied)
+
+    // Función que retorna otra función
+    let triple: fn(int) : int = makeMultiplier(3)
+    let tripled: int = triple(7)
+    print("makeMultiplier(3) applied to 7:")
+    print(tripled)
+
+    // Uso de una función void
+    logCalculation("Final result:", tripled)
+
+    // Arreglo de strings
+    let names: array<string> = ["Monkey", "Thorsten", "Gilberth"]
+    let firstName: string = names[0]
+    print("First name in array:")
+    print(firstName)
+
+    return
 }
