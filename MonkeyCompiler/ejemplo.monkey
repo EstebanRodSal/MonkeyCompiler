@@ -1,5 +1,5 @@
 fn main() : void {
-    let age: int = 1
+    let age: int = 5
     let name: string = "Monkey"
     let result: int = 10 * (20 / 2)
 

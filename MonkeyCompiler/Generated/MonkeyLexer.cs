@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Monkey.g4 by ANTLR 4.13.2
+// Generated from C:/Users/esteb/OneDrive - Estudiantes ITCR/TEC/Semestre 6/Compiladores e interpretes/Proyecto/MonkeyCompiler/MonkeyCompiler/Grammar/Monkey.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace Generated {
 using System;
 using System.IO;
 using System.Text;
@@ -211,3 +212,4 @@ public partial class MonkeyLexer : Lexer {
 
 
 }
+} // namespace Generated

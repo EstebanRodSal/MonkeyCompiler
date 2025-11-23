@@ -54,20 +54,24 @@ functionParameterTypes
 // ---------------- STATEMENTS ----------------
 
 statement
-    : letStatement
-    | returnStatement
-    | expressionStatement
-    | ifStatement
-    | blockStatement
-    | printStatement
+    : 
+      letStatement                          #LetStmt
+    | returnStatement                       #ReturnStmt               
+    | expressionStatement                   #ExpressionStmt
+    | ifStatement                           #IfStmt
+    | blockStatement                        #BlockStmt
+    | printStatement                        #PrintStmt
     ;
 
 letStatement
-    : LET CONST? identifier COLON type ASSIGN expression
+    : LET identifier COLON type ASSIGN expression            #LetVarStmt
+    | LET CONST identifier COLON type ASSIGN expression      #ConstVarStmt
     ;
 
+
 returnStatement
-    : RETURN expression?
+    : RETURN expression    #ReturnWithValue
+    | RETURN               #ReturnWithoutValue
     ;
 
 expressionStatement
@@ -75,7 +79,8 @@ expressionStatement
     ;
 
 ifStatement
-    : IF expression blockStatement (ELSE blockStatement)?
+    : IF expression blockStatement                      #IfOnly
+    | IF expression blockStatement ELSE blockStatement  #IfElse
     ;
 
 blockStatement
@@ -125,16 +130,16 @@ callExpression
 // ---------------- PRIMITIVES ----------------
 
 primitiveExpression
-    : integerLiteral
-    | stringLiteral
-    | charLiteral
-    | identifier
-    | TRUE
-    | FALSE
-    | LPAREN expression RPAREN
-    | arrayLiteral
-    | functionLiteral
-    | hashLiteral
+    : integerLiteral                        #IntLiteralExpr
+    | stringLiteral                         #StringLiteralExpr
+    | charLiteral                           #CharLiteralExpr
+    | identifier                            #IdentifierExpr
+    | TRUE                                  #TrueLiteralExpr
+    | FALSE                                 #FalseLiteralExpr
+    | LPAREN expression RPAREN              #GroupedExpr
+    | arrayLiteral                          #ArrayLiteralExpr
+    | functionLiteral                       #FunctionLiteralExpr
+    | hashLiteral                           #HashLiteralExpr
     ;
 
 arrayLiteral

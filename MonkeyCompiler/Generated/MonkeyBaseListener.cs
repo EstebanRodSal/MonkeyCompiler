@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Monkey.g4 by ANTLR 4.13.2
+// Generated from C:/Users/esteb/OneDrive - Estudiantes ITCR/TEC/Semestre 6/Compiladores e interpretes/Proyecto/MonkeyCompiler/MonkeyCompiler/Grammar/Monkey.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace Generated {
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -156,41 +157,145 @@ public partial class MonkeyBaseListener : IMonkeyListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunctionParameterTypes([NotNull] MonkeyParser.FunctionParameterTypesContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MonkeyParser.statement"/>.
+	/// Enter a parse tree produced by the <c>LetStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStatement([NotNull] MonkeyParser.StatementContext context) { }
+	public virtual void EnterLetStmt([NotNull] MonkeyParser.LetStmtContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MonkeyParser.statement"/>.
+	/// Exit a parse tree produced by the <c>LetStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStatement([NotNull] MonkeyParser.StatementContext context) { }
+	public virtual void ExitLetStmt([NotNull] MonkeyParser.LetStmtContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MonkeyParser.letStatement"/>.
+	/// Enter a parse tree produced by the <c>ReturnStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterLetStatement([NotNull] MonkeyParser.LetStatementContext context) { }
+	public virtual void EnterReturnStmt([NotNull] MonkeyParser.ReturnStmtContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MonkeyParser.letStatement"/>.
+	/// Exit a parse tree produced by the <c>ReturnStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitLetStatement([NotNull] MonkeyParser.LetStatementContext context) { }
+	public virtual void ExitReturnStmt([NotNull] MonkeyParser.ReturnStmtContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MonkeyParser.returnStatement"/>.
+	/// Enter a parse tree produced by the <c>ExpressionStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterReturnStatement([NotNull] MonkeyParser.ReturnStatementContext context) { }
+	public virtual void EnterExpressionStmt([NotNull] MonkeyParser.ExpressionStmtContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MonkeyParser.returnStatement"/>.
+	/// Exit a parse tree produced by the <c>ExpressionStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitReturnStatement([NotNull] MonkeyParser.ReturnStatementContext context) { }
+	public virtual void ExitExpressionStmt([NotNull] MonkeyParser.ExpressionStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>IfStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIfStmt([NotNull] MonkeyParser.IfStmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>IfStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIfStmt([NotNull] MonkeyParser.IfStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>BlockStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBlockStmt([NotNull] MonkeyParser.BlockStmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>BlockStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBlockStmt([NotNull] MonkeyParser.BlockStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>PrintStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPrintStmt([NotNull] MonkeyParser.PrintStmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>PrintStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPrintStmt([NotNull] MonkeyParser.PrintStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>LetVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLetVarStmt([NotNull] MonkeyParser.LetVarStmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>LetVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLetVarStmt([NotNull] MonkeyParser.LetVarStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ConstVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterConstVarStmt([NotNull] MonkeyParser.ConstVarStmtContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ConstVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitConstVarStmt([NotNull] MonkeyParser.ConstVarStmtContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ReturnWithValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterReturnWithValue([NotNull] MonkeyParser.ReturnWithValueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ReturnWithValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitReturnWithValue([NotNull] MonkeyParser.ReturnWithValueContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ReturnWithoutValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterReturnWithoutValue([NotNull] MonkeyParser.ReturnWithoutValueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ReturnWithoutValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitReturnWithoutValue([NotNull] MonkeyParser.ReturnWithoutValueContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MonkeyParser.expressionStatement"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -204,17 +309,33 @@ public partial class MonkeyBaseListener : IMonkeyListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitExpressionStatement([NotNull] MonkeyParser.ExpressionStatementContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MonkeyParser.ifStatement"/>.
+	/// Enter a parse tree produced by the <c>IfOnly</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterIfStatement([NotNull] MonkeyParser.IfStatementContext context) { }
+	public virtual void EnterIfOnly([NotNull] MonkeyParser.IfOnlyContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MonkeyParser.ifStatement"/>.
+	/// Exit a parse tree produced by the <c>IfOnly</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitIfStatement([NotNull] MonkeyParser.IfStatementContext context) { }
+	public virtual void ExitIfOnly([NotNull] MonkeyParser.IfOnlyContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>IfElse</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIfElse([NotNull] MonkeyParser.IfElseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>IfElse</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIfElse([NotNull] MonkeyParser.IfElseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MonkeyParser.blockStatement"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -324,17 +445,145 @@ public partial class MonkeyBaseListener : IMonkeyListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCallExpression([NotNull] MonkeyParser.CallExpressionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="MonkeyParser.primitiveExpression"/>.
+	/// Enter a parse tree produced by the <c>IntLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterPrimitiveExpression([NotNull] MonkeyParser.PrimitiveExpressionContext context) { }
+	public virtual void EnterIntLiteralExpr([NotNull] MonkeyParser.IntLiteralExprContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="MonkeyParser.primitiveExpression"/>.
+	/// Exit a parse tree produced by the <c>IntLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitPrimitiveExpression([NotNull] MonkeyParser.PrimitiveExpressionContext context) { }
+	public virtual void ExitIntLiteralExpr([NotNull] MonkeyParser.IntLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>StringLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterStringLiteralExpr([NotNull] MonkeyParser.StringLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>StringLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitStringLiteralExpr([NotNull] MonkeyParser.StringLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>CharLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCharLiteralExpr([NotNull] MonkeyParser.CharLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>CharLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCharLiteralExpr([NotNull] MonkeyParser.CharLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>IdentifierExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIdentifierExpr([NotNull] MonkeyParser.IdentifierExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>IdentifierExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIdentifierExpr([NotNull] MonkeyParser.IdentifierExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>TrueLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterTrueLiteralExpr([NotNull] MonkeyParser.TrueLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>TrueLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitTrueLiteralExpr([NotNull] MonkeyParser.TrueLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>FalseLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFalseLiteralExpr([NotNull] MonkeyParser.FalseLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>FalseLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFalseLiteralExpr([NotNull] MonkeyParser.FalseLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>GroupedExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterGroupedExpr([NotNull] MonkeyParser.GroupedExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>GroupedExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitGroupedExpr([NotNull] MonkeyParser.GroupedExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ArrayLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterArrayLiteralExpr([NotNull] MonkeyParser.ArrayLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ArrayLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitArrayLiteralExpr([NotNull] MonkeyParser.ArrayLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>FunctionLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFunctionLiteralExpr([NotNull] MonkeyParser.FunctionLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>FunctionLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFunctionLiteralExpr([NotNull] MonkeyParser.FunctionLiteralExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>HashLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterHashLiteralExpr([NotNull] MonkeyParser.HashLiteralExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>HashLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitHashLiteralExpr([NotNull] MonkeyParser.HashLiteralExprContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="MonkeyParser.arrayLiteral"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -457,3 +706,4 @@ public partial class MonkeyBaseListener : IMonkeyListener {
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
+} // namespace Generated

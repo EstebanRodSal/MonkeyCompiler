@@ -52,17 +52,6 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="AST\AstNode.cs" />
-        <Compile Include="AST\AstPrintVisitor.cs" />
-        <Compile Include="AST\BlockStatement.cs" />
-        <Compile Include="AST\Expressions.cs" />
-        <Compile Include="AST\ExpressionStatement.cs" />
-        <Compile Include="AST\FunctionDeclaration.cs" />
-        <Compile Include="AST\MonkeyAstBaseVisitor.cs" />
-        <Compile Include="AST\ParseTreeToAstVisitor.cs" />
-        <Compile Include="AST\PrintStatement.cs" />
-        <Compile Include="AST\Statements.cs" />
-        <Compile Include="AST\Types.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -78,8 +67,7 @@
         <Compile Include="ParserErrorListener.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
-        <Compile Include="Scanner\LexerErrorListener.cs" />
-        <Compile Include="Scanner\MonkeyScanner.cs" />
+        <Compile Include="Scanner\MyErrorListener.cs" />
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,8 +92,6 @@
         <None Include="App.config"/>
     </ItemGroup>
     <ItemGroup>
-      <Compile Include="AST\ProgramNode.cs" />
-      <Compile Include="AST\IfStatement.cs" />
       <Content Include="ejemplo.monkey">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

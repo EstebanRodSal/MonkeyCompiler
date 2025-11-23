@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Monkey.g4 by ANTLR 4.13.2
+// Generated from C:/Users/esteb/OneDrive - Estudiantes ITCR/TEC/Semestre 6/Compiladores e interpretes/Proyecto/MonkeyCompiler/MonkeyCompiler/Grammar/Monkey.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace Generated {
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using IToken = Antlr4.Runtime.IToken;
@@ -92,23 +93,75 @@ public interface IMonkeyVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitFunctionParameterTypes([NotNull] MonkeyParser.FunctionParameterTypesContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MonkeyParser.statement"/>.
+	/// Visit a parse tree produced by the <c>LetStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitStatement([NotNull] MonkeyParser.StatementContext context);
+	Result VisitLetStmt([NotNull] MonkeyParser.LetStmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MonkeyParser.letStatement"/>.
+	/// Visit a parse tree produced by the <c>ReturnStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLetStatement([NotNull] MonkeyParser.LetStatementContext context);
+	Result VisitReturnStmt([NotNull] MonkeyParser.ReturnStmtContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MonkeyParser.returnStatement"/>.
+	/// Visit a parse tree produced by the <c>ExpressionStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitReturnStatement([NotNull] MonkeyParser.ReturnStatementContext context);
+	Result VisitExpressionStmt([NotNull] MonkeyParser.ExpressionStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>IfStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIfStmt([NotNull] MonkeyParser.IfStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>BlockStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBlockStmt([NotNull] MonkeyParser.BlockStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>PrintStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPrintStmt([NotNull] MonkeyParser.PrintStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>LetVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLetVarStmt([NotNull] MonkeyParser.LetVarStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ConstVarStmt</c>
+	/// labeled alternative in <see cref="MonkeyParser.letStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitConstVarStmt([NotNull] MonkeyParser.ConstVarStmtContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ReturnWithValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitReturnWithValue([NotNull] MonkeyParser.ReturnWithValueContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ReturnWithoutValue</c>
+	/// labeled alternative in <see cref="MonkeyParser.returnStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitReturnWithoutValue([NotNull] MonkeyParser.ReturnWithoutValueContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="MonkeyParser.expressionStatement"/>.
 	/// </summary>
@@ -116,11 +169,19 @@ public interface IMonkeyVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExpressionStatement([NotNull] MonkeyParser.ExpressionStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MonkeyParser.ifStatement"/>.
+	/// Visit a parse tree produced by the <c>IfOnly</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitIfStatement([NotNull] MonkeyParser.IfStatementContext context);
+	Result VisitIfOnly([NotNull] MonkeyParser.IfOnlyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>IfElse</c>
+	/// labeled alternative in <see cref="MonkeyParser.ifStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIfElse([NotNull] MonkeyParser.IfElseContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="MonkeyParser.blockStatement"/>.
 	/// </summary>
@@ -176,11 +237,75 @@ public interface IMonkeyVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCallExpression([NotNull] MonkeyParser.CallExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="MonkeyParser.primitiveExpression"/>.
+	/// Visit a parse tree produced by the <c>IntLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPrimitiveExpression([NotNull] MonkeyParser.PrimitiveExpressionContext context);
+	Result VisitIntLiteralExpr([NotNull] MonkeyParser.IntLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>StringLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitStringLiteralExpr([NotNull] MonkeyParser.StringLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>CharLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitCharLiteralExpr([NotNull] MonkeyParser.CharLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>IdentifierExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIdentifierExpr([NotNull] MonkeyParser.IdentifierExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>TrueLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitTrueLiteralExpr([NotNull] MonkeyParser.TrueLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>FalseLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFalseLiteralExpr([NotNull] MonkeyParser.FalseLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>GroupedExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitGroupedExpr([NotNull] MonkeyParser.GroupedExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>ArrayLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArrayLiteralExpr([NotNull] MonkeyParser.ArrayLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>FunctionLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFunctionLiteralExpr([NotNull] MonkeyParser.FunctionLiteralExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>HashLiteralExpr</c>
+	/// labeled alternative in <see cref="MonkeyParser.primitiveExpression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitHashLiteralExpr([NotNull] MonkeyParser.HashLiteralExprContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="MonkeyParser.arrayLiteral"/>.
 	/// </summary>
@@ -236,3 +361,4 @@ public interface IMonkeyVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitIdentifier([NotNull] MonkeyParser.IdentifierContext context);
 }
+} // namespace Generated

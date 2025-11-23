@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Monkey.g4 by ANTLR 4.13.2
+// Generated from C:/Users/esteb/OneDrive - Estudiantes ITCR/TEC/Semestre 6/Compiladores e interpretes/Proyecto/MonkeyCompiler/MonkeyCompiler/Grammar/Monkey.g4 by ANTLR 4.13.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace Generated {
 using System;
 using System.IO;
 using System.Text;
@@ -878,43 +879,146 @@ public partial class MonkeyParser : Parser {
 	}
 
 	public partial class StatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public LetStatementContext letStatement() {
-			return GetRuleContext<LetStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ReturnStatementContext returnStatement() {
-			return GetRuleContext<ReturnStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
-			return GetRuleContext<ExpressionStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
-			return GetRuleContext<IfStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public BlockStatementContext blockStatement() {
-			return GetRuleContext<BlockStatementContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public PrintStatementContext printStatement() {
-			return GetRuleContext<PrintStatementContext>(0);
-		}
 		public StatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_statement; } }
+	 
+		public StatementContext() { }
+		public virtual void CopyFrom(StatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class IfStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public IfStatementContext ifStatement() {
+			return GetRuleContext<IfStatementContext>(0);
+		}
+		public IfStmtContext(StatementContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.EnterStatement(this);
+			if (typedListener != null) typedListener.EnterIfStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.ExitStatement(this);
+			if (typedListener != null) typedListener.ExitIfStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitIfStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class PrintStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public PrintStatementContext printStatement() {
+			return GetRuleContext<PrintStatementContext>(0);
+		}
+		public PrintStmtContext(StatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterPrintStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitPrintStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitPrintStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class BlockStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public BlockStatementContext blockStatement() {
+			return GetRuleContext<BlockStatementContext>(0);
+		}
+		public BlockStmtContext(StatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterBlockStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitBlockStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBlockStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ReturnStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ReturnStatementContext returnStatement() {
+			return GetRuleContext<ReturnStatementContext>(0);
+		}
+		public ReturnStmtContext(StatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterReturnStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitReturnStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitReturnStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class LetStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public LetStatementContext letStatement() {
+			return GetRuleContext<LetStatementContext>(0);
+		}
+		public LetStmtContext(StatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterLetStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitLetStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitLetStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ExpressionStmtContext : StatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionStatementContext expressionStatement() {
+			return GetRuleContext<ExpressionStatementContext>(0);
+		}
+		public ExpressionStmtContext(StatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterExpressionStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitExpressionStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitExpressionStmt(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -928,6 +1032,7 @@ public partial class MonkeyParser : Parser {
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 			case 1:
+				_localctx = new LetStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
 				State = 148;
@@ -935,6 +1040,7 @@ public partial class MonkeyParser : Parser {
 				}
 				break;
 			case 2:
+				_localctx = new ReturnStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
 				State = 149;
@@ -942,6 +1048,7 @@ public partial class MonkeyParser : Parser {
 				}
 				break;
 			case 3:
+				_localctx = new ExpressionStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
 				State = 150;
@@ -949,6 +1056,7 @@ public partial class MonkeyParser : Parser {
 				}
 				break;
 			case 4:
+				_localctx = new IfStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
 				State = 151;
@@ -956,6 +1064,7 @@ public partial class MonkeyParser : Parser {
 				}
 				break;
 			case 5:
+				_localctx = new BlockStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
 				State = 152;
@@ -963,6 +1072,7 @@ public partial class MonkeyParser : Parser {
 				}
 				break;
 			case 6:
+				_localctx = new PrintStmtContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
 				State = 153;
@@ -983,6 +1093,50 @@ public partial class MonkeyParser : Parser {
 	}
 
 	public partial class LetStatementContext : ParserRuleContext {
+		public LetStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_letStatement; } }
+	 
+		public LetStatementContext() { }
+		public virtual void CopyFrom(LetStatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ConstVarStmtContext : LetStatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LET() { return GetToken(MonkeyParser.LET, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONST() { return GetToken(MonkeyParser.CONST, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(MonkeyParser.COLON, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public TypeContext type() {
+			return GetRuleContext<TypeContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ASSIGN() { return GetToken(MonkeyParser.ASSIGN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
+		}
+		public ConstVarStmtContext(LetStatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterConstVarStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitConstVarStmt(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitConstVarStmt(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class LetVarStmtContext : LetStatementContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LET() { return GetToken(MonkeyParser.LET, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
 			return GetRuleContext<IdentifierContext>(0);
@@ -995,26 +1149,21 @@ public partial class MonkeyParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CONST() { return GetToken(MonkeyParser.CONST, 0); }
-		public LetStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_letStatement; } }
+		public LetVarStmtContext(LetStatementContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.EnterLetStatement(this);
+			if (typedListener != null) typedListener.EnterLetVarStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.ExitLetStatement(this);
+			if (typedListener != null) typedListener.ExitLetVarStmt(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitLetStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitLetVarStmt(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1023,32 +1172,48 @@ public partial class MonkeyParser : Parser {
 	public LetStatementContext letStatement() {
 		LetStatementContext _localctx = new LetStatementContext(Context, State);
 		EnterRule(_localctx, 22, RULE_letStatement);
-		int _la;
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 156;
-			Match(LET);
-			State = 158;
+			State = 171;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==CONST) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
+			case 1:
+				_localctx = new LetVarStmtContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
 				{
+				State = 156;
+				Match(LET);
 				State = 157;
-				Match(CONST);
+				identifier();
+				State = 158;
+				Match(COLON);
+				State = 159;
+				type();
+				State = 160;
+				Match(ASSIGN);
+				State = 161;
+				expression();
 				}
-			}
-
-			State = 160;
-			identifier();
-			State = 161;
-			Match(COLON);
-			State = 162;
-			type();
-			State = 163;
-			Match(ASSIGN);
-			State = 164;
-			expression();
+				break;
+			case 2:
+				_localctx = new ConstVarStmtContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 163;
+				Match(LET);
+				State = 164;
+				Match(CONST);
+				State = 165;
+				identifier();
+				State = 166;
+				Match(COLON);
+				State = 167;
+				type();
+				State = 168;
+				Match(ASSIGN);
+				State = 169;
+				expression();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1063,29 +1228,57 @@ public partial class MonkeyParser : Parser {
 	}
 
 	public partial class ReturnStatementContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURN() { return GetToken(MonkeyParser.RETURN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
 		public ReturnStatementContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_returnStatement; } }
+	 
+		public ReturnStatementContext() { }
+		public virtual void CopyFrom(ReturnStatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class ReturnWithValueContext : ReturnStatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURN() { return GetToken(MonkeyParser.RETURN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
+		}
+		public ReturnWithValueContext(ReturnStatementContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.EnterReturnStatement(this);
+			if (typedListener != null) typedListener.EnterReturnWithValue(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.ExitReturnStatement(this);
+			if (typedListener != null) typedListener.ExitReturnWithValue(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitReturnStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitReturnWithValue(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ReturnWithoutValueContext : ReturnStatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RETURN() { return GetToken(MonkeyParser.RETURN, 0); }
+		public ReturnWithoutValueContext(ReturnStatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterReturnWithoutValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitReturnWithoutValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitReturnWithoutValue(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1095,20 +1288,27 @@ public partial class MonkeyParser : Parser {
 		ReturnStatementContext _localctx = new ReturnStatementContext(Context, State);
 		EnterRule(_localctx, 24, RULE_returnStatement);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 166;
-			Match(RETURN);
-			State = 168;
+			State = 176;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
 			case 1:
+				_localctx = new ReturnWithValueContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 167;
+				State = 173;
+				Match(RETURN);
+				State = 174;
 				expression();
 				}
 				break;
-			}
+			case 2:
+				_localctx = new ReturnWithoutValueContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 175;
+				Match(RETURN);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1156,7 +1356,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 170;
+			State = 178;
 			expression();
 			}
 		}
@@ -1172,6 +1372,18 @@ public partial class MonkeyParser : Parser {
 	}
 
 	public partial class IfStatementContext : ParserRuleContext {
+		public IfStatementContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_ifStatement; } }
+	 
+		public IfStatementContext() { }
+		public virtual void CopyFrom(IfStatementContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class IfElseContext : IfStatementContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(MonkeyParser.IF, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
@@ -1183,25 +1395,47 @@ public partial class MonkeyParser : Parser {
 			return GetRuleContext<BlockStatementContext>(i);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode ELSE() { return GetToken(MonkeyParser.ELSE, 0); }
-		public IfStatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_ifStatement; } }
+		public IfElseContext(IfStatementContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.EnterIfStatement(this);
+			if (typedListener != null) typedListener.EnterIfElse(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.ExitIfStatement(this);
+			if (typedListener != null) typedListener.ExitIfElse(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitIfStatement(this);
+			if (typedVisitor != null) return typedVisitor.VisitIfElse(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class IfOnlyContext : IfStatementContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IF() { return GetToken(MonkeyParser.IF, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public BlockStatementContext blockStatement() {
+			return GetRuleContext<BlockStatementContext>(0);
+		}
+		public IfOnlyContext(IfStatementContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterIfOnly(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitIfOnly(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIfOnly(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1210,28 +1444,38 @@ public partial class MonkeyParser : Parser {
 	public IfStatementContext ifStatement() {
 		IfStatementContext _localctx = new IfStatementContext(Context, State);
 		EnterRule(_localctx, 28, RULE_ifStatement);
-		int _la;
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 172;
-			Match(IF);
-			State = 173;
-			expression();
-			State = 174;
-			blockStatement();
-			State = 177;
+			State = 190;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==ELSE) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,10,Context) ) {
+			case 1:
+				_localctx = new IfOnlyContext(_localctx);
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 175;
-				Match(ELSE);
-				State = 176;
+				State = 180;
+				Match(IF);
+				State = 181;
+				expression();
+				State = 182;
 				blockStatement();
 				}
-			}
-
+				break;
+			case 2:
+				_localctx = new IfElseContext(_localctx);
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 184;
+				Match(IF);
+				State = 185;
+				expression();
+				State = 186;
+				blockStatement();
+				State = 187;
+				Match(ELSE);
+				State = 188;
+				blockStatement();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1285,23 +1529,23 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 179;
+			State = 192;
 			Match(LBRACE);
-			State = 183;
+			State = 196;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4134443090282L) != 0)) {
 				{
 				{
-				State = 180;
+				State = 193;
 				statement();
 				}
 				}
-				State = 185;
+				State = 198;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 186;
+			State = 199;
 			Match(RBRACE);
 			}
 		}
@@ -1353,13 +1597,13 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 188;
+			State = 201;
 			Match(PRINT);
-			State = 189;
+			State = 202;
 			Match(LPAREN);
-			State = 190;
+			State = 203;
 			expression();
-			State = 191;
+			State = 204;
 			Match(RPAREN);
 			}
 		}
@@ -1418,21 +1662,21 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 193;
+			State = 206;
 			additionExpression();
-			State = 199;
+			State = 212;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 528482304L) != 0)) {
 				{
 				{
-				State = 194;
+				State = 207;
 				relationalOp();
-				State = 195;
+				State = 208;
 				additionExpression();
 				}
 				}
-				State = 201;
+				State = 214;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1487,7 +1731,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 202;
+			State = 215;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 528482304L) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -1555,15 +1799,15 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 204;
+			State = 217;
 			multiplicationExpression();
-			State = 209;
+			State = 222;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==PLUS || _la==MINUS) {
 				{
 				{
-				State = 205;
+				State = 218;
 				_la = TokenStream.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				ErrorHandler.RecoverInline(this);
@@ -1572,11 +1816,11 @@ public partial class MonkeyParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 206;
+				State = 219;
 				multiplicationExpression();
 				}
 				}
-				State = 211;
+				State = 224;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1639,15 +1883,15 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 212;
+			State = 225;
 			elementExpression();
-			State = 217;
+			State = 230;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==STAR || _la==SLASH) {
 				{
 				{
-				State = 213;
+				State = 226;
 				_la = TokenStream.LA(1);
 				if ( !(_la==STAR || _la==SLASH) ) {
 				ErrorHandler.RecoverInline(this);
@@ -1656,11 +1900,11 @@ public partial class MonkeyParser : Parser {
 					ErrorHandler.ReportMatch(this);
 				    Consume();
 				}
-				State = 214;
+				State = 227;
 				elementExpression();
 				}
 				}
-				State = 219;
+				State = 232;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -1717,20 +1961,20 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 220;
+			State = 233;
 			primitiveExpression();
-			State = 223;
+			State = 236;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,15,Context) ) {
 			case 1:
 				{
-				State = 221;
+				State = 234;
 				elementAccess();
 				}
 				break;
 			case 2:
 				{
-				State = 222;
+				State = 235;
 				callExpression();
 				}
 				break;
@@ -1784,11 +2028,11 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 225;
+			State = 238;
 			Match(LBRACK);
-			State = 226;
+			State = 239;
 			expression();
-			State = 227;
+			State = 240;
 			Match(RBRACK);
 			}
 		}
@@ -1840,19 +2084,19 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 229;
+			State = 242;
 			Match(LPAREN);
-			State = 231;
+			State = 244;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4134443089922L) != 0)) {
 				{
-				State = 230;
+				State = 243;
 				expressionList();
 				}
 			}
 
-			State = 233;
+			State = 246;
 			Match(RPAREN);
 			}
 		}
@@ -1868,53 +2112,232 @@ public partial class MonkeyParser : Parser {
 	}
 
 	public partial class PrimitiveExpressionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public IntegerLiteralContext integerLiteral() {
-			return GetRuleContext<IntegerLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
-			return GetRuleContext<StringLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public CharLiteralContext charLiteral() {
-			return GetRuleContext<CharLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
-			return GetRuleContext<IdentifierContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE() { return GetToken(MonkeyParser.TRUE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE() { return GetToken(MonkeyParser.FALSE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(MonkeyParser.LPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(MonkeyParser.RPAREN, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ArrayLiteralContext arrayLiteral() {
-			return GetRuleContext<ArrayLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public FunctionLiteralContext functionLiteral() {
-			return GetRuleContext<FunctionLiteralContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public HashLiteralContext hashLiteral() {
-			return GetRuleContext<HashLiteralContext>(0);
-		}
 		public PrimitiveExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_primitiveExpression; } }
+	 
+		public PrimitiveExpressionContext() { }
+		public virtual void CopyFrom(PrimitiveExpressionContext context) {
+			base.CopyFrom(context);
+		}
+	}
+	public partial class TrueLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode TRUE() { return GetToken(MonkeyParser.TRUE, 0); }
+		public TrueLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.EnterPrimitiveExpression(this);
+			if (typedListener != null) typedListener.EnterTrueLiteralExpr(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IMonkeyListener typedListener = listener as IMonkeyListener;
-			if (typedListener != null) typedListener.ExitPrimitiveExpression(this);
+			if (typedListener != null) typedListener.ExitTrueLiteralExpr(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitPrimitiveExpression(this);
+			if (typedVisitor != null) return typedVisitor.VisitTrueLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class IntLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public IntegerLiteralContext integerLiteral() {
+			return GetRuleContext<IntegerLiteralContext>(0);
+		}
+		public IntLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterIntLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitIntLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIntLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class FunctionLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionLiteralContext functionLiteral() {
+			return GetRuleContext<FunctionLiteralContext>(0);
+		}
+		public FunctionLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterFunctionLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitFunctionLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFunctionLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class HashLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public HashLiteralContext hashLiteral() {
+			return GetRuleContext<HashLiteralContext>(0);
+		}
+		public HashLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterHashLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitHashLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitHashLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class IdentifierExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
+		public IdentifierExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterIdentifierExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitIdentifierExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitIdentifierExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class FalseLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode FALSE() { return GetToken(MonkeyParser.FALSE, 0); }
+		public FalseLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterFalseLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitFalseLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitFalseLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class ArrayLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ArrayLiteralContext arrayLiteral() {
+			return GetRuleContext<ArrayLiteralContext>(0);
+		}
+		public ArrayLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterArrayLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitArrayLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitArrayLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class StringLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public StringLiteralContext stringLiteral() {
+			return GetRuleContext<StringLiteralContext>(0);
+		}
+		public StringLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterStringLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitStringLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitStringLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class CharLiteralExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public CharLiteralContext charLiteral() {
+			return GetRuleContext<CharLiteralContext>(0);
+		}
+		public CharLiteralExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterCharLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitCharLiteralExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitCharLiteralExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+	public partial class GroupedExprContext : PrimitiveExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode LPAREN() { return GetToken(MonkeyParser.LPAREN, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression() {
+			return GetRuleContext<ExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode RPAREN() { return GetToken(MonkeyParser.RPAREN, 0); }
+		public GroupedExprContext(PrimitiveExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.EnterGroupedExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IMonkeyListener typedListener = listener as IMonkeyListener;
+			if (typedListener != null) typedListener.ExitGroupedExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IMonkeyVisitor<TResult> typedVisitor = visitor as IMonkeyVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitGroupedExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -1924,80 +2347,90 @@ public partial class MonkeyParser : Parser {
 		PrimitiveExpressionContext _localctx = new PrimitiveExpressionContext(Context, State);
 		EnterRule(_localctx, 48, RULE_primitiveExpression);
 		try {
-			State = 248;
+			State = 261;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case INTEGER_LITERAL:
+				_localctx = new IntLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 235;
+				State = 248;
 				integerLiteral();
 				}
 				break;
 			case STRING_LITERAL:
+				_localctx = new StringLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 236;
+				State = 249;
 				stringLiteral();
 				}
 				break;
 			case CHAR_LITERAL:
+				_localctx = new CharLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 237;
+				State = 250;
 				charLiteral();
 				}
 				break;
 			case IDENTIFIER:
+				_localctx = new IdentifierExprContext(_localctx);
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 238;
+				State = 251;
 				identifier();
 				}
 				break;
 			case TRUE:
+				_localctx = new TrueLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 239;
+				State = 252;
 				Match(TRUE);
 				}
 				break;
 			case FALSE:
+				_localctx = new FalseLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 240;
+				State = 253;
 				Match(FALSE);
 				}
 				break;
 			case LPAREN:
+				_localctx = new GroupedExprContext(_localctx);
 				EnterOuterAlt(_localctx, 7);
 				{
-				State = 241;
+				State = 254;
 				Match(LPAREN);
-				State = 242;
+				State = 255;
 				expression();
-				State = 243;
+				State = 256;
 				Match(RPAREN);
 				}
 				break;
 			case LBRACK:
+				_localctx = new ArrayLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 8);
 				{
-				State = 245;
+				State = 258;
 				arrayLiteral();
 				}
 				break;
 			case FN:
+				_localctx = new FunctionLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 9);
 				{
-				State = 246;
+				State = 259;
 				functionLiteral();
 				}
 				break;
 			case LBRACE:
+				_localctx = new HashLiteralExprContext(_localctx);
 				EnterOuterAlt(_localctx, 10);
 				{
-				State = 247;
+				State = 260;
 				hashLiteral();
 				}
 				break;
@@ -2053,19 +2486,19 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 250;
+			State = 263;
 			Match(LBRACK);
-			State = 252;
+			State = 265;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 4134443089922L) != 0)) {
 				{
-				State = 251;
+				State = 264;
 				expressionList();
 				}
 			}
 
-			State = 254;
+			State = 267;
 			Match(RBRACK);
 			}
 		}
@@ -2125,27 +2558,27 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 256;
+			State = 269;
 			Match(FN);
-			State = 257;
+			State = 270;
 			Match(LPAREN);
-			State = 259;
+			State = 272;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==IDENTIFIER) {
 				{
-				State = 258;
+				State = 271;
 				functionParameters();
 				}
 			}
 
-			State = 261;
+			State = 274;
 			Match(RPAREN);
-			State = 262;
+			State = 275;
 			Match(COLON);
-			State = 263;
+			State = 276;
 			type();
-			State = 264;
+			State = 277;
 			blockStatement();
 			}
 		}
@@ -2204,27 +2637,27 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 266;
+			State = 279;
 			Match(LBRACE);
-			State = 267;
+			State = 280;
 			hashContent();
-			State = 272;
+			State = 285;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 268;
+				State = 281;
 				Match(COMMA);
-				State = 269;
+				State = 282;
 				hashContent();
 				}
 				}
-				State = 274;
+				State = 287;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 275;
+			State = 288;
 			Match(RBRACE);
 			}
 		}
@@ -2277,11 +2710,11 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 277;
+			State = 290;
 			expression();
-			State = 278;
+			State = 291;
 			Match(COLON);
-			State = 279;
+			State = 292;
 			expression();
 			}
 		}
@@ -2338,21 +2771,21 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 281;
+			State = 294;
 			expression();
-			State = 286;
+			State = 299;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				State = 282;
+				State = 295;
 				Match(COMMA);
-				State = 283;
+				State = 296;
 				expression();
 				}
 				}
-				State = 288;
+				State = 301;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -2401,7 +2834,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 289;
+			State = 302;
 			Match(INTEGER_LITERAL);
 			}
 		}
@@ -2448,7 +2881,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 291;
+			State = 304;
 			Match(STRING_LITERAL);
 			}
 		}
@@ -2495,7 +2928,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 293;
+			State = 306;
 			Match(CHAR_LITERAL);
 			}
 		}
@@ -2542,7 +2975,7 @@ public partial class MonkeyParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 295;
+			State = 308;
 			Match(IDENTIFIER);
 			}
 		}
@@ -2558,7 +2991,7 @@ public partial class MonkeyParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,44,298,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,44,311,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
@@ -2568,33 +3001,34 @@ public partial class MonkeyParser : Parser {
 		9,3,1,4,1,4,1,4,1,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,118,8,5,1,6,1,
 		6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,8,1,8,1,8,3,8,135,8,8,1,8,
 		1,8,1,8,1,8,1,9,1,9,1,9,5,9,144,8,9,10,9,12,9,147,9,9,1,10,1,10,1,10,1,
-		10,1,10,1,10,3,10,155,8,10,1,11,1,11,3,11,159,8,11,1,11,1,11,1,11,1,11,
-		1,11,1,11,1,12,1,12,3,12,169,8,12,1,13,1,13,1,14,1,14,1,14,1,14,1,14,3,
-		14,178,8,14,1,15,1,15,5,15,182,8,15,10,15,12,15,185,9,15,1,15,1,15,1,16,
-		1,16,1,16,1,16,1,16,1,17,1,17,1,17,1,17,5,17,198,8,17,10,17,12,17,201,
-		9,17,1,18,1,18,1,19,1,19,1,19,5,19,208,8,19,10,19,12,19,211,9,19,1,20,
-		1,20,1,20,5,20,216,8,20,10,20,12,20,219,9,20,1,21,1,21,1,21,3,21,224,8,
-		21,1,22,1,22,1,22,1,22,1,23,1,23,3,23,232,8,23,1,23,1,23,1,24,1,24,1,24,
-		1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,3,24,249,8,24,1,25,1,
-		25,3,25,253,8,25,1,25,1,25,1,26,1,26,1,26,3,26,260,8,26,1,26,1,26,1,26,
-		1,26,1,26,1,27,1,27,1,27,1,27,5,27,271,8,27,10,27,12,27,274,9,27,1,27,
-		1,27,1,28,1,28,1,28,1,28,1,29,1,29,1,29,5,29,285,8,29,10,29,12,29,288,
-		9,29,1,30,1,30,1,31,1,31,1,32,1,32,1,33,1,33,1,33,0,0,34,0,2,4,6,8,10,
-		12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,
-		60,62,64,66,0,3,1,0,23,28,1,0,18,19,1,0,20,21,304,0,72,1,0,0,0,2,78,1,
-		0,0,0,4,86,1,0,0,0,6,97,1,0,0,0,8,105,1,0,0,0,10,117,1,0,0,0,12,119,1,
-		0,0,0,14,124,1,0,0,0,16,131,1,0,0,0,18,140,1,0,0,0,20,154,1,0,0,0,22,156,
-		1,0,0,0,24,166,1,0,0,0,26,170,1,0,0,0,28,172,1,0,0,0,30,179,1,0,0,0,32,
-		188,1,0,0,0,34,193,1,0,0,0,36,202,1,0,0,0,38,204,1,0,0,0,40,212,1,0,0,
-		0,42,220,1,0,0,0,44,225,1,0,0,0,46,229,1,0,0,0,48,248,1,0,0,0,50,250,1,
-		0,0,0,52,256,1,0,0,0,54,266,1,0,0,0,56,277,1,0,0,0,58,281,1,0,0,0,60,289,
-		1,0,0,0,62,291,1,0,0,0,64,293,1,0,0,0,66,295,1,0,0,0,68,71,3,4,2,0,69,
-		71,3,20,10,0,70,68,1,0,0,0,70,69,1,0,0,0,71,74,1,0,0,0,72,70,1,0,0,0,72,
-		73,1,0,0,0,73,75,1,0,0,0,74,72,1,0,0,0,75,76,3,2,1,0,76,77,5,0,0,1,77,
-		1,1,0,0,0,78,79,5,1,0,0,79,80,5,2,0,0,80,81,5,29,0,0,81,82,5,30,0,0,82,
-		83,5,36,0,0,83,84,5,13,0,0,84,85,3,30,15,0,85,3,1,0,0,0,86,87,5,1,0,0,
-		87,88,3,66,33,0,88,90,5,29,0,0,89,91,3,6,3,0,90,89,1,0,0,0,90,91,1,0,0,
-		0,91,92,1,0,0,0,92,93,5,30,0,0,93,94,5,36,0,0,94,95,3,10,5,0,95,96,3,30,
+		10,1,10,1,10,3,10,155,8,10,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,1,11,
+		1,11,1,11,1,11,1,11,1,11,1,11,3,11,172,8,11,1,12,1,12,1,12,3,12,177,8,
+		12,1,13,1,13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,191,
+		8,14,1,15,1,15,5,15,195,8,15,10,15,12,15,198,9,15,1,15,1,15,1,16,1,16,
+		1,16,1,16,1,16,1,17,1,17,1,17,1,17,5,17,211,8,17,10,17,12,17,214,9,17,
+		1,18,1,18,1,19,1,19,1,19,5,19,221,8,19,10,19,12,19,224,9,19,1,20,1,20,
+		1,20,5,20,229,8,20,10,20,12,20,232,9,20,1,21,1,21,1,21,3,21,237,8,21,1,
+		22,1,22,1,22,1,22,1,23,1,23,3,23,245,8,23,1,23,1,23,1,24,1,24,1,24,1,24,
+		1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,24,3,24,262,8,24,1,25,1,25,3,
+		25,266,8,25,1,25,1,25,1,26,1,26,1,26,3,26,273,8,26,1,26,1,26,1,26,1,26,
+		1,26,1,27,1,27,1,27,1,27,5,27,284,8,27,10,27,12,27,287,9,27,1,27,1,27,
+		1,28,1,28,1,28,1,28,1,29,1,29,1,29,5,29,298,8,29,10,29,12,29,301,9,29,
+		1,30,1,30,1,31,1,31,1,32,1,32,1,33,1,33,1,33,0,0,34,0,2,4,6,8,10,12,14,
+		16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,
+		64,66,0,3,1,0,23,28,1,0,18,19,1,0,20,21,317,0,72,1,0,0,0,2,78,1,0,0,0,
+		4,86,1,0,0,0,6,97,1,0,0,0,8,105,1,0,0,0,10,117,1,0,0,0,12,119,1,0,0,0,
+		14,124,1,0,0,0,16,131,1,0,0,0,18,140,1,0,0,0,20,154,1,0,0,0,22,171,1,0,
+		0,0,24,176,1,0,0,0,26,178,1,0,0,0,28,190,1,0,0,0,30,192,1,0,0,0,32,201,
+		1,0,0,0,34,206,1,0,0,0,36,215,1,0,0,0,38,217,1,0,0,0,40,225,1,0,0,0,42,
+		233,1,0,0,0,44,238,1,0,0,0,46,242,1,0,0,0,48,261,1,0,0,0,50,263,1,0,0,
+		0,52,269,1,0,0,0,54,279,1,0,0,0,56,290,1,0,0,0,58,294,1,0,0,0,60,302,1,
+		0,0,0,62,304,1,0,0,0,64,306,1,0,0,0,66,308,1,0,0,0,68,71,3,4,2,0,69,71,
+		3,20,10,0,70,68,1,0,0,0,70,69,1,0,0,0,71,74,1,0,0,0,72,70,1,0,0,0,72,73,
+		1,0,0,0,73,75,1,0,0,0,74,72,1,0,0,0,75,76,3,2,1,0,76,77,5,0,0,1,77,1,1,
+		0,0,0,78,79,5,1,0,0,79,80,5,2,0,0,80,81,5,29,0,0,81,82,5,30,0,0,82,83,
+		5,36,0,0,83,84,5,13,0,0,84,85,3,30,15,0,85,3,1,0,0,0,86,87,5,1,0,0,87,
+		88,3,66,33,0,88,90,5,29,0,0,89,91,3,6,3,0,90,89,1,0,0,0,90,91,1,0,0,0,
+		91,92,1,0,0,0,92,93,5,30,0,0,93,94,5,36,0,0,94,95,3,10,5,0,95,96,3,30,
 		15,0,96,5,1,0,0,0,97,102,3,8,4,0,98,99,5,35,0,0,99,101,3,8,4,0,100,98,
 		1,0,0,0,101,104,1,0,0,0,102,100,1,0,0,0,102,103,1,0,0,0,103,7,1,0,0,0,
 		104,102,1,0,0,0,105,106,3,66,33,0,106,107,5,36,0,0,107,108,3,10,5,0,108,
@@ -2612,46 +3046,49 @@ public partial class MonkeyParser : Parser {
 		0,0,147,145,1,0,0,0,148,155,3,22,11,0,149,155,3,24,12,0,150,155,3,26,13,
 		0,151,155,3,28,14,0,152,155,3,30,15,0,153,155,3,32,16,0,154,148,1,0,0,
 		0,154,149,1,0,0,0,154,150,1,0,0,0,154,151,1,0,0,0,154,152,1,0,0,0,154,
-		153,1,0,0,0,155,21,1,0,0,0,156,158,5,3,0,0,157,159,5,4,0,0,158,157,1,0,
-		0,0,158,159,1,0,0,0,159,160,1,0,0,0,160,161,3,66,33,0,161,162,5,36,0,0,
-		162,163,3,10,5,0,163,164,5,22,0,0,164,165,3,34,17,0,165,23,1,0,0,0,166,
-		168,5,5,0,0,167,169,3,34,17,0,168,167,1,0,0,0,168,169,1,0,0,0,169,25,1,
-		0,0,0,170,171,3,34,17,0,171,27,1,0,0,0,172,173,5,6,0,0,173,174,3,34,17,
-		0,174,177,3,30,15,0,175,176,5,7,0,0,176,178,3,30,15,0,177,175,1,0,0,0,
-		177,178,1,0,0,0,178,29,1,0,0,0,179,183,5,31,0,0,180,182,3,20,10,0,181,
-		180,1,0,0,0,182,185,1,0,0,0,183,181,1,0,0,0,183,184,1,0,0,0,184,186,1,
-		0,0,0,185,183,1,0,0,0,186,187,5,32,0,0,187,31,1,0,0,0,188,189,5,8,0,0,
-		189,190,5,29,0,0,190,191,3,34,17,0,191,192,5,30,0,0,192,33,1,0,0,0,193,
-		199,3,38,19,0,194,195,3,36,18,0,195,196,3,38,19,0,196,198,1,0,0,0,197,
-		194,1,0,0,0,198,201,1,0,0,0,199,197,1,0,0,0,199,200,1,0,0,0,200,35,1,0,
-		0,0,201,199,1,0,0,0,202,203,7,0,0,0,203,37,1,0,0,0,204,209,3,40,20,0,205,
-		206,7,1,0,0,206,208,3,40,20,0,207,205,1,0,0,0,208,211,1,0,0,0,209,207,
-		1,0,0,0,209,210,1,0,0,0,210,39,1,0,0,0,211,209,1,0,0,0,212,217,3,42,21,
-		0,213,214,7,2,0,0,214,216,3,42,21,0,215,213,1,0,0,0,216,219,1,0,0,0,217,
-		215,1,0,0,0,217,218,1,0,0,0,218,41,1,0,0,0,219,217,1,0,0,0,220,223,3,48,
-		24,0,221,224,3,44,22,0,222,224,3,46,23,0,223,221,1,0,0,0,223,222,1,0,0,
-		0,223,224,1,0,0,0,224,43,1,0,0,0,225,226,5,33,0,0,226,227,3,34,17,0,227,
-		228,5,34,0,0,228,45,1,0,0,0,229,231,5,29,0,0,230,232,3,58,29,0,231,230,
-		1,0,0,0,231,232,1,0,0,0,232,233,1,0,0,0,233,234,5,30,0,0,234,47,1,0,0,
-		0,235,249,3,60,30,0,236,249,3,62,31,0,237,249,3,64,32,0,238,249,3,66,33,
-		0,239,249,5,16,0,0,240,249,5,17,0,0,241,242,5,29,0,0,242,243,3,34,17,0,
-		243,244,5,30,0,0,244,249,1,0,0,0,245,249,3,50,25,0,246,249,3,52,26,0,247,
-		249,3,54,27,0,248,235,1,0,0,0,248,236,1,0,0,0,248,237,1,0,0,0,248,238,
-		1,0,0,0,248,239,1,0,0,0,248,240,1,0,0,0,248,241,1,0,0,0,248,245,1,0,0,
-		0,248,246,1,0,0,0,248,247,1,0,0,0,249,49,1,0,0,0,250,252,5,33,0,0,251,
-		253,3,58,29,0,252,251,1,0,0,0,252,253,1,0,0,0,253,254,1,0,0,0,254,255,
-		5,34,0,0,255,51,1,0,0,0,256,257,5,1,0,0,257,259,5,29,0,0,258,260,3,6,3,
-		0,259,258,1,0,0,0,259,260,1,0,0,0,260,261,1,0,0,0,261,262,5,30,0,0,262,
-		263,5,36,0,0,263,264,3,10,5,0,264,265,3,30,15,0,265,53,1,0,0,0,266,267,
-		5,31,0,0,267,272,3,56,28,0,268,269,5,35,0,0,269,271,3,56,28,0,270,268,
-		1,0,0,0,271,274,1,0,0,0,272,270,1,0,0,0,272,273,1,0,0,0,273,275,1,0,0,
-		0,274,272,1,0,0,0,275,276,5,32,0,0,276,55,1,0,0,0,277,278,3,34,17,0,278,
-		279,5,36,0,0,279,280,3,34,17,0,280,57,1,0,0,0,281,286,3,34,17,0,282,283,
-		5,35,0,0,283,285,3,34,17,0,284,282,1,0,0,0,285,288,1,0,0,0,286,284,1,0,
-		0,0,286,287,1,0,0,0,287,59,1,0,0,0,288,286,1,0,0,0,289,290,5,38,0,0,290,
-		61,1,0,0,0,291,292,5,40,0,0,292,63,1,0,0,0,293,294,5,39,0,0,294,65,1,0,
-		0,0,295,296,5,41,0,0,296,67,1,0,0,0,22,70,72,90,102,117,134,145,154,158,
-		168,177,183,199,209,217,223,231,248,252,259,272,286
+		153,1,0,0,0,155,21,1,0,0,0,156,157,5,3,0,0,157,158,3,66,33,0,158,159,5,
+		36,0,0,159,160,3,10,5,0,160,161,5,22,0,0,161,162,3,34,17,0,162,172,1,0,
+		0,0,163,164,5,3,0,0,164,165,5,4,0,0,165,166,3,66,33,0,166,167,5,36,0,0,
+		167,168,3,10,5,0,168,169,5,22,0,0,169,170,3,34,17,0,170,172,1,0,0,0,171,
+		156,1,0,0,0,171,163,1,0,0,0,172,23,1,0,0,0,173,174,5,5,0,0,174,177,3,34,
+		17,0,175,177,5,5,0,0,176,173,1,0,0,0,176,175,1,0,0,0,177,25,1,0,0,0,178,
+		179,3,34,17,0,179,27,1,0,0,0,180,181,5,6,0,0,181,182,3,34,17,0,182,183,
+		3,30,15,0,183,191,1,0,0,0,184,185,5,6,0,0,185,186,3,34,17,0,186,187,3,
+		30,15,0,187,188,5,7,0,0,188,189,3,30,15,0,189,191,1,0,0,0,190,180,1,0,
+		0,0,190,184,1,0,0,0,191,29,1,0,0,0,192,196,5,31,0,0,193,195,3,20,10,0,
+		194,193,1,0,0,0,195,198,1,0,0,0,196,194,1,0,0,0,196,197,1,0,0,0,197,199,
+		1,0,0,0,198,196,1,0,0,0,199,200,5,32,0,0,200,31,1,0,0,0,201,202,5,8,0,
+		0,202,203,5,29,0,0,203,204,3,34,17,0,204,205,5,30,0,0,205,33,1,0,0,0,206,
+		212,3,38,19,0,207,208,3,36,18,0,208,209,3,38,19,0,209,211,1,0,0,0,210,
+		207,1,0,0,0,211,214,1,0,0,0,212,210,1,0,0,0,212,213,1,0,0,0,213,35,1,0,
+		0,0,214,212,1,0,0,0,215,216,7,0,0,0,216,37,1,0,0,0,217,222,3,40,20,0,218,
+		219,7,1,0,0,219,221,3,40,20,0,220,218,1,0,0,0,221,224,1,0,0,0,222,220,
+		1,0,0,0,222,223,1,0,0,0,223,39,1,0,0,0,224,222,1,0,0,0,225,230,3,42,21,
+		0,226,227,7,2,0,0,227,229,3,42,21,0,228,226,1,0,0,0,229,232,1,0,0,0,230,
+		228,1,0,0,0,230,231,1,0,0,0,231,41,1,0,0,0,232,230,1,0,0,0,233,236,3,48,
+		24,0,234,237,3,44,22,0,235,237,3,46,23,0,236,234,1,0,0,0,236,235,1,0,0,
+		0,236,237,1,0,0,0,237,43,1,0,0,0,238,239,5,33,0,0,239,240,3,34,17,0,240,
+		241,5,34,0,0,241,45,1,0,0,0,242,244,5,29,0,0,243,245,3,58,29,0,244,243,
+		1,0,0,0,244,245,1,0,0,0,245,246,1,0,0,0,246,247,5,30,0,0,247,47,1,0,0,
+		0,248,262,3,60,30,0,249,262,3,62,31,0,250,262,3,64,32,0,251,262,3,66,33,
+		0,252,262,5,16,0,0,253,262,5,17,0,0,254,255,5,29,0,0,255,256,3,34,17,0,
+		256,257,5,30,0,0,257,262,1,0,0,0,258,262,3,50,25,0,259,262,3,52,26,0,260,
+		262,3,54,27,0,261,248,1,0,0,0,261,249,1,0,0,0,261,250,1,0,0,0,261,251,
+		1,0,0,0,261,252,1,0,0,0,261,253,1,0,0,0,261,254,1,0,0,0,261,258,1,0,0,
+		0,261,259,1,0,0,0,261,260,1,0,0,0,262,49,1,0,0,0,263,265,5,33,0,0,264,
+		266,3,58,29,0,265,264,1,0,0,0,265,266,1,0,0,0,266,267,1,0,0,0,267,268,
+		5,34,0,0,268,51,1,0,0,0,269,270,5,1,0,0,270,272,5,29,0,0,271,273,3,6,3,
+		0,272,271,1,0,0,0,272,273,1,0,0,0,273,274,1,0,0,0,274,275,5,30,0,0,275,
+		276,5,36,0,0,276,277,3,10,5,0,277,278,3,30,15,0,278,53,1,0,0,0,279,280,
+		5,31,0,0,280,285,3,56,28,0,281,282,5,35,0,0,282,284,3,56,28,0,283,281,
+		1,0,0,0,284,287,1,0,0,0,285,283,1,0,0,0,285,286,1,0,0,0,286,288,1,0,0,
+		0,287,285,1,0,0,0,288,289,5,32,0,0,289,55,1,0,0,0,290,291,3,34,17,0,291,
+		292,5,36,0,0,292,293,3,34,17,0,293,57,1,0,0,0,294,299,3,34,17,0,295,296,
+		5,35,0,0,296,298,3,34,17,0,297,295,1,0,0,0,298,301,1,0,0,0,299,297,1,0,
+		0,0,299,300,1,0,0,0,300,59,1,0,0,0,301,299,1,0,0,0,302,303,5,38,0,0,303,
+		61,1,0,0,0,304,305,5,40,0,0,305,63,1,0,0,0,306,307,5,39,0,0,307,65,1,0,
+		0,0,308,309,5,41,0,0,309,67,1,0,0,0,22,70,72,90,102,117,134,145,154,171,
+		176,190,196,212,222,230,236,244,261,265,272,285,299
 	};
 
 	public static readonly ATN _ATN =
@@ -2659,3 +3096,4 @@ public partial class MonkeyParser : Parser {
 
 
 }
+} // namespace Generated
