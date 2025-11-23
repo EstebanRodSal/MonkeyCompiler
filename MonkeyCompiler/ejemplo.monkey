@@ -34,3 +34,4 @@ fn main() : void {
     print(fibonacci(5))       // print resultado de fibonacci(5)
     print(add(5, 7))          // print resultado de add(5,7)
 }
+
