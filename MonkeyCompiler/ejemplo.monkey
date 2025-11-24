@@ -1,37 +1,79 @@
+fn add(a: int, b: int) : int {
+    return a + b
+}
+
+fn factorial(n: int) : int {
+    if (n == 0) {
+        return 1
+    } else {
+        let previous: int = n - 1
+        let result: int = factorial(previous)
+        return n * result
+    }
+}
+
+
+fn sumArray(values: array<int>) : int {
+    let first: int = values[0]
+    let second: int = values[1]
+    let third: int = values[2]
+    let sum: int = first + second + third
+    return sum
+}
+
+fn buildFullName(firstName: string, lastName: string) : string {
+    let space: string = " "
+    let withSpace: string = firstName + space
+    let fullName: string = withSpace + lastName
+    return fullName
+}
+
+fn isAdult(age: int) : bool {
+    if (age >= 18) {
+        return true
+    } else {
+        return false
+    }
+}
+
+fn max3(a: int, b: int, c: int) : int {
+    let maxValue: int = a
+
+    if (b > maxValue) {
+        let newMax: int = b
+        return max3Internal(newMax, c)
+    } else {
+        return max3Internal(maxValue, c)
+    }
+}
+
+fn max3Internal(currentMax: int, other: int) : int {
+    if (other > currentMax) {
+        return other
+    } else {
+        return currentMax
+    }
+}
+
 fn main() : void {
-    let age: int = 5
-    let name: string = "Monkey"
-    let result: int = 10 * (20 / 2)
+    let x: int = add(3, 4)
+    let fact5: int = factorial(5)
 
-    let myArray: array<int> = [1, 2, 3, 4, 5]
-    let thorsten: hash<string,string> = {"name": "Thorsten", "age": "28"}
+    let numbers: array<int> = [1, 2, 3]
+    let total: int = sumArray(numbers)
 
-    // Access examples
-    let firstElement: int = myArray[0]
-    let thorstenName: string = thorsten["name"]
+    let fullName: string = buildFullName("Ada", "Lovelace")
 
-    // Function literal assigned to a variable with a function type
-    let add: fn(int, int) : int = fn(a: int, b: int) : int {
-        return a + b
-    }
+    let age: int = 20
+    let adult: bool = isAdult(age)
 
-    // Recursive Fibonacci function (function literal with explicit return type)
-    let fibonacci: fn(int) : int = fn(x: int) : int {
-        if (x == 0) {
-            return 0
-        } else {
-            if (x == 1) {
-                return 1
-            } else {
-                return fibonacci(x - 1) + fibonacci(x - 2)
-            }
-        }
-    }
+    let biggest: int = max3(10, 5, 8)
 
-    // Print hash, array and fibonacci result
-    print(thorsten)           // print hash completo
-    print(myArray)            // print array completo
-    print(fibonacci(5))       // print resultado de fibonacci(5)
-    print(add(5, 7))          // print resultado de add(5,7)
+    print(x)
+    print(fact5)
+    print(total)
+    print(fullName)
+    print(adult)
+    print(biggest)
 }
 
