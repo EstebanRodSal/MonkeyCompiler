@@ -54,6 +54,7 @@
     <ItemGroup>
         <Compile Include="Checker\SymbolTable.cs" />
         <Compile Include="Checker\TypeChecker.cs" />
+        <Compile Include="Encoder\Encoder.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>

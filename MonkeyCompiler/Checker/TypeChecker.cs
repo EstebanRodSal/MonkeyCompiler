@@ -23,6 +23,9 @@ public class TypeChecker: MonkeyBaseVisitor<object>
         _isInFunction = false;
     }
     
+    
+    
+    
     private void VisitFunctionBody(MonkeyParser.FunctionDeclarationContext context)
     {
         var returnType = (MonkeyType)Visit(context.type());
